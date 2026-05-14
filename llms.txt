@@ -1,0 +1,35 @@
+# New Market Growth
+
+> Affiliate marketing operators for consumer lenders. We helped build Credit Karma's playbook from the inside, and now we run it for you.
+
+New Market Growth (NMG) is a fractional consultancy that helps US consumer lenders (cards, personal loans, auto, home equity) win in affiliate marketplaces. Our partners spent years inside Credit Karma and Capital One on both the publisher and lender sides of the affiliate channel — a combination that doesn't exist elsewhere in the market.
+
+## Who we work with
+
+Heads of growth, CMOs, and CEOs at consumer lenders trying to crack or scale their affiliate channel. Typical engagement: a lender that's been spending on affiliate for 6–12+ months without the conversion rates, volume, or ROI they expected.
+
+## What we do
+
+- Audit your current affiliate program and tell you what's broken in week one
+- Align credit, product, engineering, and marketing on what good looks like
+- Operate the channel directly: marketplace relationships, integrations, conversion optimization, ROI accountability
+- Engagement tiers based on monthly new-customer volume targets: 5–10K (Solid), 10–50K (Strong), 50K+ (Home Run)
+
+## Marketplaces we have working relationships with
+
+Credit Karma, Experian, LendingTree, Bankrate, QuinStreet, Credit Sesame, WalletHub, Credible, MoneyLion, Bulldog Media Group.
+
+## Key links
+
+- Homepage: https://www.newmarketgrowth.com/
+- Diagnostic quiz (5 minutes — find out where your program stands): https://form.typeform.com/to/zeW6gtop
+- The Free Toaster newsletter and podcast (practitioner takes on what's moving in affiliate, with live data): linked from the homepage
+
+## People
+
+- **Carlos Caro** — Founder & Managing Partner. Built Credit Karma's partnerships team from 3 to 25, led the Card Business as GM, ran Lightbox's go-to-market through 2020. 7 years at Capital One in card marketing. Most recently SVP Customer Acquisition at Caribou. Hosts The Free Toaster.
+- **Robert Cezeaux** — Managing Partner. 13 years senior data science at Capital One — predictive models across cards, auto, and home lending. Led Credit Karma's Partner Decision Sciences team as Lightbox scaled across verticals.
+
+## Topics we know cold
+
+Affiliate marketing for consumer lenders, marketplace partner management, lender-side program operations, publisher-side decision sciences, conversion rate optimization on affiliate funnels, application APIs, attribution, ROI modeling for affiliate channels.
