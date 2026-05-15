@@ -392,10 +392,22 @@
   }
   .team-photo img {
     width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(100%) brightness(1.2);
+    filter: grayscale(100%);
   }
   .team-name { font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 4px; letter-spacing: -0.02em; }
-  .team-role { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 500; }
+  .team-role {
+    font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 500;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .team-role .team-linkedin-inline {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    color: var(--text-mid);
+    transition: color 140ms ease-out;
+  }
+  .team-role .team-linkedin-inline svg { width: 16px; height: 16px; }
+  .team-role .team-linkedin-inline:hover { color: #0A66C2; }
+  .team-role .team-linkedin-inline:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
   .team-section { margin-bottom: 14px; font-size: 15px; color: var(--text); line-height: 1.65; }
   .team-section strong { color: var(--teal); font-weight: 700; }
   .team-creds {
@@ -440,6 +452,9 @@
   }
   .proof-bab-text { font-size: 14px; color: var(--text-mid); line-height: 1.65; margin-bottom: 18px; }
   .proof-bab-text:last-child { margin-bottom: 0; }
+  /* "What we did" payoff — teal label, darker body */
+  .proof-bab-label.is-action { color: var(--teal); }
+  .proof-bab-text.is-action { color: var(--text); font-weight: 500; }
 
   /* WINNING — the larger-feature-box section, teal-soft panel */
   #winning {
@@ -462,11 +477,10 @@
   .tier-card.tier-1 .tier-num { color: rgba(10, 37, 64, 0.55); }
   .tier-card.tier-1 .tier-body { color: var(--text-mid); }
 
-  /* Tier 2 — white card with shadow. Present, but no teal accents. */
+  /* Tier 2 — flat white card. Present, but no lift and no teal accents. */
   .tier-card.tier-2 {
     background: var(--bg);
     border: 1px solid var(--bg);
-    box-shadow: 0 12px 32px rgba(10, 37, 64, 0.10);
   }
   .tier-card.tier-2 .tier-label { color: var(--text-mid); }
   .tier-card.tier-2 .tier-num { color: var(--text); }
@@ -554,6 +568,34 @@
   .piece-card.is-newsletter .piece-thumb-title { color: var(--text); }
   .piece-card.is-newsletter .piece-format { background: var(--text); color: var(--bg); }
 
+  /* Hidden tiles — collapsed by default, revealed when grid has .is-expanded */
+  .piece-card.is-hidden { display: none; }
+  .toaster-pieces.is-expanded .piece-card.is-hidden { display: flex; }
+
+  /* Show more / archive controls below the grid */
+  .toaster-more {
+    display: flex; flex-direction: column; align-items: center; gap: 18px;
+    margin-top: 40px;
+  }
+  .toaster-show-more {
+    background: none; border: 1px solid var(--text); color: var(--text);
+    padding: 14px 28px; font-size: 12px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    transition: background 120ms ease-out, color 120ms ease-out;
+    font-family: inherit;
+  }
+  .toaster-show-more:hover { background: var(--text); color: var(--bg); }
+  .toaster-show-more .arrow { display: inline-block; margin-left: 8px; transition: transform 200ms ease-out; }
+  .toaster-pieces.is-expanded ~ .toaster-more .toaster-show-more .arrow { transform: rotate(180deg); }
+  .toaster-archive-link {
+    font-size: 14px; font-weight: 600; color: var(--text-mid);
+    text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px;
+    display: none;
+    transition: color 120ms ease-out, border-color 120ms ease-out;
+  }
+  .toaster-archive-link:hover { color: var(--text); border-color: var(--text); }
+  .toaster-pieces.is-expanded ~ .toaster-more .toaster-archive-link { display: inline-block; }
+
   .piece-card:hover .piece-thumb-title,
   .piece-card:focus-visible .piece-thumb-title {
     text-decoration: underline;
@@ -592,6 +634,15 @@
   .footer-nav { display: flex; gap: 28px; list-style: none; }
   .footer-nav a { font-size: 13px; color: var(--text-mid); text-decoration: none; }
   .footer-nav a:hover { color: var(--text); }
+  .footer-social {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    color: var(--text-mid);
+    transition: color 140ms ease-out;
+  }
+  .footer-social svg { width: 20px; height: 20px; }
+  .footer-social:hover { color: var(--text); }
+  .footer-social:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
   .footer-legal { font-size: 12px; color: var(--text-light); }
 
   /* RESPONSIVE */
@@ -879,7 +930,7 @@
           <img src="carlos-caro.jpg" alt="Carlos Caro" width="320" height="320" loading="lazy">
         </div>
         <div class="team-name">Carlos Caro</div>
-        <div class="team-role">Founder &amp; Managing Partner</div>
+        <div class="team-role">Founder &amp; Managing Partner<a href="https://www.linkedin.com/in/the-carlos-caro/" target="_blank" rel="noopener" class="team-linkedin-inline" aria-label="Carlos Caro on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         <div class="team-section"><strong>Publisher side:</strong> Built Credit Karma's partnerships team from 3 to 25 and led the Card Business as GM (2016). Ran Lightbox's go-to-market through 2020.</div>
         <div class="team-section"><strong>Lender side:</strong> 7 years at Capital One in card marketing. Most recently SVP Customer Acquisition at Caribou.</div>
         <div class="team-section"><strong>Also:</strong> Hosts The Free Toaster podcast and newsletter.</div>
@@ -890,7 +941,7 @@
           <img src="robert-cezeaux.jpg" alt="Robert Cezeaux" width="320" height="320" loading="lazy">
         </div>
         <div class="team-name">Robert Cezeaux</div>
-        <div class="team-role">Managing Partner</div>
+        <div class="team-role">Managing Partner<a href="https://www.linkedin.com/in/robert-cezeaux-3456007/" target="_blank" rel="noopener" class="team-linkedin-inline" aria-label="Robert Cezeaux on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
         <div class="team-section"><strong>Lender side:</strong> 13 years senior data science at Capital One — predictive models across cards, auto, and home lending.</div>
         <div class="team-section"><strong>Publisher side:</strong> Led Credit Karma's Partner Decision Sciences team as Lightbox scaled across verticals.</div>
         <div class="team-creds">Credit Karma<span class="sep">·</span>Capital One<span class="sep">·</span>Texas A&amp;M<span class="sep">·</span>SMU</div>
@@ -928,8 +979,8 @@
         <div class="proof-bab">
           <div class="proof-bab-label">Before</div>
           <p class="proof-bab-text">Strong product. Couldn't get Credit Karma to see the business case.</p>
-          <div class="proof-bab-label">What we did</div>
-          <p class="proof-bab-text">Brought the right relationships and got the conversation to a senior-enough level to tell the full story.</p>
+          <div class="proof-bab-label is-action">What we did</div>
+          <p class="proof-bab-text is-action">Brought the right relationships and got the conversation to a senior-enough level to tell the full story.</p>
         </div>
       </div>
       <div class="proof-card">
@@ -938,8 +989,8 @@
         <div class="proof-bab">
           <div class="proof-bab-label">Before</div>
           <p class="proof-bab-text">Program was running. Approvals were suppressed. The lender didn't know why.</p>
-          <div class="proof-bab-label">What we did</div>
-          <p class="proof-bab-text">Underwriting model analysis surfaced a data vendor feeding incorrect information — suppressing approvals the lender didn't know they were losing. Fixed in 4 months.</p>
+          <div class="proof-bab-label is-action">What we did</div>
+          <p class="proof-bab-text is-action">Underwriting model analysis surfaced a data vendor feeding incorrect information — suppressing approvals the lender didn't know they were losing. Fixed in 4 months.</p>
         </div>
       </div>
       <div class="proof-card">
@@ -948,8 +999,8 @@
         <div class="proof-bab">
           <div class="proof-bab-label">Before</div>
           <p class="proof-bab-text">Personal loan program performing well below potential. APR positioning misaligned, application friction too high.</p>
-          <div class="proof-bab-label">What we did</div>
-          <p class="proof-bab-text">Fixed APR positioning and reduced application friction. Volume more than doubled — they exhausted their 2025 capital allocation ahead of schedule. Re-engaging in 2026.</p>
+          <div class="proof-bab-label is-action">What we did</div>
+          <p class="proof-bab-text is-action">Fixed APR positioning and reduced application friction. Volume more than doubled — they exhausted their 2025 capital allocation ahead of schedule. Re-engaging in 2026.</p>
         </div>
       </div>
     </div>
@@ -1022,34 +1073,62 @@
     <h2 class="section-title toaster-title">The affiliate POV consumer lenders can't afford to&nbsp;miss.</h2>
     <p class="toaster-desc">A newsletter and podcast on what's actually moving in consumer affiliate — practitioner POV, live data, takes you won't get from trade press — read by thousands of bank and fintech&nbsp;operators.</p>
     <div class="toaster-actions">
-      <a href="#" class="btn btn-outline">Listen to the podcast</a>
-      <a href="#" class="btn btn-toaster">Subscribe free</a>
+      <a href="https://www.thefreetoaster.com/podcast?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=cta_listen" class="btn btn-outline" target="_blank" rel="noopener">Listen to the podcast</a>
+      <a href="https://www.thefreetoaster.com/?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=cta_subscribe" class="btn btn-toaster" target="_blank" rel="noopener">Subscribe for Free</a>
     </div>
-    <div class="toaster-pieces">
-      <a href="#" class="piece-card is-podcast">
+    <div class="toaster-pieces" id="toaster-pieces-grid">
+      <a href="https://www.thefreetoaster.com/p/e045-rakesh-patel-evp-of-the-experian-753?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_rakesh" class="piece-card is-podcast" target="_blank" rel="noopener">
         <div class="piece-thumb">
           <span class="piece-format">Podcast</span>
           <div class="piece-thumb-title">E045 — Rakesh Patel, EVP of the Experian Marketplace</div>
         </div>
       </a>
-      <a href="#" class="piece-card is-newsletter">
+      <a href="https://www.thefreetoaster.com/p/news-for-fintech-marketers-august-4-2025?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_deepdive" class="piece-card is-newsletter" target="_blank" rel="noopener">
         <div class="piece-thumb">
           <span class="piece-format">Newsletter</span>
           <div class="piece-thumb-title">Deep Dive: Affiliate Marketing</div>
         </div>
       </a>
-      <a href="#" class="piece-card is-newsletter">
+      <a href="https://www.thefreetoaster.com/p/stop-negotiating-your-cpa-like-chris-voss?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_voss" class="piece-card is-newsletter" target="_blank" rel="noopener">
         <div class="piece-thumb">
           <span class="piece-format">Newsletter</span>
           <div class="piece-thumb-title">Stop Negotiating Your CPA Like Chris Voss</div>
         </div>
       </a>
-      <a href="#" class="piece-card is-podcast">
+      <a href="https://www.thefreetoaster.com/p/e047-eliminating-friction-in-the-25d?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_olson" class="piece-card is-podcast" target="_blank" rel="noopener">
         <div class="piece-thumb">
           <span class="piece-format">Podcast</span>
           <div class="piece-thumb-title">E047 — Eliminating Friction in the Lending Funnel, with Rachael Olson, Former Head Of Product Strategy at Discover</div>
         </div>
       </a>
+      <a href="https://www.thefreetoaster.com/p/scared-money-in-affiliate-marketing?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_scared_money" class="piece-card is-newsletter is-hidden" target="_blank" rel="noopener">
+        <div class="piece-thumb">
+          <span class="piece-format">Newsletter</span>
+          <div class="piece-thumb-title">Scared Money in Affiliate Marketing: How to Avoid This Trap in 2026</div>
+        </div>
+      </a>
+      <a href="https://www.thefreetoaster.com/p/the-7-traits-your-next-vp-of-partnerships?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_vp_traits" class="piece-card is-newsletter is-hidden" target="_blank" rel="noopener">
+        <div class="piece-thumb">
+          <span class="piece-format">Newsletter</span>
+          <div class="piece-thumb-title">7 Traits Your Next VP of Partnerships MUST Have</div>
+        </div>
+      </a>
+      <a href="https://www.thefreetoaster.com/p/e040-mr-beast-buys-fintech-app-step-971?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_mrbeast" class="piece-card is-podcast is-hidden" target="_blank" rel="noopener">
+        <div class="piece-thumb">
+          <span class="piece-format">Podcast</span>
+          <div class="piece-thumb-title">E040 — Mr. Beast Buys Fintech App Step: A Bold Bet or a Disaster in the Making?</div>
+        </div>
+      </a>
+      <a href="https://www.thefreetoaster.com/p/nerdwallets-q1-26-earnings-why-is?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_nerdwallet" class="piece-card is-newsletter is-hidden" target="_blank" rel="noopener">
+        <div class="piece-thumb">
+          <span class="piece-format">Newsletter</span>
+          <div class="piece-thumb-title">NerdWallet's Q1 '26 Earnings: Why Is The Stock Down 30%?</div>
+        </div>
+      </a>
+    </div>
+    <div class="toaster-more">
+      <button type="button" class="toaster-show-more" aria-expanded="false" aria-controls="toaster-pieces-grid">Show more pieces<span class="arrow" aria-hidden="true">↓</span></button>
+      <a href="https://www.thefreetoaster.com/archive?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=archive_link" class="toaster-archive-link" target="_blank" rel="noopener">View full archive on Free Toaster →</a>
     </div>
   </div>
 </section>
@@ -1061,9 +1140,7 @@
     <p class="final-cta-body">Take our 10-question quiz. It takes less than 3 minutes. We'll tell you where your program stands, what's ready, and where you might have more work to do.</p>
     <div class="final-cta-actions">
       <a href="https://form.typeform.com/to/zeW6gtop" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Take our quiz</a>
-      <a href="mailto:carlos@newmarketgrowth.com" class="final-cta-secondary">Email carlos@newmarketgrowth.com</a>
     </div>
-    <p class="final-cta-scarcity">NMG takes on a small number of clients at any time.</p>
   </div>
 </section>
 
@@ -1079,10 +1156,26 @@
       <li><a href="#proof">Proof</a></li>
       <li><a href="#toaster">The Free Toaster</a></li>
       <li><a href="mailto:carlos@newmarketgrowth.com">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/the-carlos-caro/" target="_blank" rel="noopener" class="footer-social" aria-label="Carlos Caro on LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a></li>
     </ul>
     <span class="footer-legal">© New Market Growth, LLC. 2026. All rights reserved.</span>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var grid = document.getElementById('toaster-pieces-grid');
+    var btn = document.querySelector('.toaster-show-more');
+    if (!grid || !btn) return;
+    btn.addEventListener('click', function () {
+      var expanded = grid.classList.toggle('is-expanded');
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      btn.firstChild.nodeValue = expanded ? 'Show fewer pieces' : 'Show more pieces';
+    });
+  })();
+</script>
 
 </body>
 </html>
