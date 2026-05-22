@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Market Growth — Affiliate Marketing for Consumer Lenders</title>
-<meta name="description" content="Most consumer lenders waste 12+ months trying to crack affiliate alone. NMG helped build Credit Karma's playbook from the inside. Take the 5-minute quiz to find out where your program stands.">
+<meta name="description" content="Most consumer lenders waste 12+ months trying to crack affiliate alone. NMG helped build Credit Karma's playbook from the inside. Take the 3-minute quiz to find out where your program stands.">
 <link rel="canonical" href="https://www.newmarketgrowth.com/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 
@@ -172,7 +172,7 @@
   .section-desc { font-size: 17px; color: var(--text-mid); line-height: 1.65; max-width: 640px; }
 
   /* HERO */
-  .hero { background: var(--bg); padding: 120px 0 96px; }
+  .hero { background: var(--bg); padding: 120px 0 40px; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 12px;
     font-size: 13px; font-weight: 700;
@@ -204,6 +204,8 @@
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 48px;
     max-width: 940px;
+    margin-top: 80px;
+    margin-bottom: 48px;
   }
   .hero-proof-item::before {
     content: ''; display: block; width: 32px; height: 2px;
@@ -295,9 +297,9 @@
     letter-spacing: -0.015em;
   }
 
-  /* DIY FAILS (Block 3) — hosts the rail-crossing teal block */
-  #diy-fails { background: var(--bg); border-top: 1px solid var(--border); }
-  #diy-fails .section-head { max-width: none; }
+  /* HOW WE WORK (Block 3) — hosts the rail-crossing teal block */
+  #how-we-work { background: var(--bg); border-top: 1px solid var(--border); }
+  #how-we-work .section-head { max-width: none; }
   .diy-body { font-size: 19px; color: var(--text-mid); line-height: 1.65; max-width: 760px; margin-bottom: 32px; }
 
   /* THE PIVOT — sub-headline beat. Smaller than H2, but a real beat with weight. */
@@ -321,61 +323,23 @@
   }
   .diy-pivot strong { font-weight: 800; }
 
-  .diy-options-intro {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--text-mid); line-height: 1.5;
-    letter-spacing: 0;
-    margin-bottom: 24px;
-  }
-  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .option-card { padding: 40px 36px; }
-  .option-card.option-1 { background: var(--text); color: var(--bg); border: 3px solid var(--text); }
-  .option-card.option-2 {
-    background: var(--bg);
-    border: 3px solid var(--teal);
-    box-shadow: 0 8px 24px rgba(15, 41, 92, 0.08);
-  }
-  .option-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; line-height: 1.25; letter-spacing: -0.015em; }
-  .option-card.option-1 .option-title { color: var(--bg); }
-  .option-card.option-2 .option-title { color: var(--text); font-weight: 800; }
+  /* HOW WE WORK — Two-column layout: left text, right numbered phases */
+  .how-we-work-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .how-we-work-left { max-width: 520px; }
+  .how-we-work-headline { font-size: clamp(28px, 3vw, 42px); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--text); margin-bottom: 24px; }
+  .how-we-work-intro { font-size: 18px; color: var(--text-mid); line-height: 1.65; margin-bottom: 24px; }
+  .how-we-work-checks { list-style: none; font-size: 15px; color: var(--text-mid); line-height: 1.65; }
+  .how-we-work-checks li { margin-bottom: 12px; padding-left: 28px; position: relative; }
+  .how-we-work-checks li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 16px; }
 
-  /* Bulleted list inside option cards */
-  .option-list { list-style: none; padding: 0; margin: 0; }
-  .option-list li {
-    position: relative;
-    padding-left: 26px;
-    margin-bottom: 12px;
-    font-size: 16px;
-    line-height: 1.55;
+  .phases-grid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-top: -80px; }
+  .phase-card { padding: 0; background: none; border: none; }
+  .phase-card::before {
+    content: ''; display: block; width: 32px; height: 2px;
+    background: var(--teal); margin-bottom: 16px;
   }
-  .option-list li:last-child { margin-bottom: 0; }
-  .option-list strong { font-weight: 800; }
-
-  /* Option 1 — muted dots on navy */
-  .option-card.option-1 .option-list li { color: rgba(255, 255, 255, 0.85); }
-  .option-card.option-1 .option-list li::before {
-    content: '';
-    position: absolute;
-    left: 8px; top: 10px;
-    width: 4px; height: 4px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-  }
-  .option-card.option-1 .option-list strong { color: var(--bg); }
-
-  /* Option 2 — teal CSS checks on white */
-  .option-card.option-2 .option-list li { color: var(--text-mid); }
-  .option-card.option-2 .option-list li::before {
-    content: '';
-    position: absolute;
-    left: 2px; top: 5px;
-    width: 6px; height: 11px;
-    border-right: 2px solid var(--teal);
-    border-bottom: 2px solid var(--teal);
-    transform: rotate(45deg);
-  }
-  .option-card.option-2 .option-list strong { color: var(--text); }
+  .phase-num { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .phase-desc { font-size: 15px; color: var(--text-mid); line-height: 1.6; margin: 0; }
 
   /* TEAM (Block 4) */
   #good-looks-like { background: var(--bg); border-top: 1px solid var(--border); }
@@ -428,7 +392,7 @@
   }
 
   /* PROOF (Block 5) — clean parallel grid, blue rail inflection at top */
-  #proof { background: var(--bg); border-top: 1px solid var(--border); }
+  #proof { background: var(--bg); border-top: 1px solid var(--border); padding: 96px 0 120px; }
   .proof-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 48px;
@@ -522,7 +486,7 @@
   }
   .step-title { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 14px; letter-spacing: -0.015em; }
   .step-body { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
-  .steps-cta { padding-top: 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .steps-cta { padding-top: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
   .steps-cta p { font-size: 17px; color: var(--text); margin: 0; max-width: 540px; font-weight: 500; }
 
   /* TOASTER — the stacked-box section */
@@ -665,9 +629,10 @@
     #marketplaces .marketplaces-grid > .logo-slot:nth-child(9)  { grid-column: 2; }
     #marketplaces .marketplaces-grid > .logo-slot:nth-child(10) { grid-column: 3; }
     .unknowns-grid, .options-grid, .team-grid, .gll-closer,
-    .proof-grid, .steps-grid, .tiers-grid {
+    .proof-grid, .steps-grid, .tiers-grid, .how-we-work-wrapper {
       grid-template-columns: 1fr; gap: 40px;
     }
+    .phases-grid { margin-top: 0; }
     .toaster-pieces { grid-template-columns: repeat(2, 1fr); }
     .hero-proof-row { grid-template-columns: 1fr; gap: 32px; }
     .steps-cta { flex-direction: column; align-items: flex-start; }
@@ -812,12 +777,8 @@
 <section id="hero-a" class="hero" style="margin-top: 72px;">
   <div class="inner">
     <p class="hero-eyebrow">Affiliate marketing for consumer lenders</p>
-    <h1 class="hero-headline">Affiliate can be your highest-ROI channel. We have the playbook to unlock it.</h1>
+    <h1 class="hero-headline">Unlocking high ROI affiliate channels for consumer lenders</h1>
     <p class="hero-sub">We helped Credit Karma build Lightbox into a $1Bn platform.<br>Now we help consumer lenders unlock 50K+ new customers a month.</p>
-    <p class="hero-bridge">How do you stack up to the best players?</p>
-    <div class="hero-actions">
-      <a href="https://form.typeform.com/to/zeW6gtop" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Take our 3 min quiz</a>
-    </div>
     <div class="hero-proof-row">
       <div class="hero-proof-item">
         <div class="hero-proof-num">$50–100M</div>
@@ -831,6 +792,10 @@
         <div class="hero-proof-num">8+ yrs</div>
         <div class="hero-proof-label">Inside Credit Karma</div>
       </div>
+    </div>
+    <p class="hero-bridge">How do you stack up to the best players?</p>
+    <div class="hero-actions">
+      <a href="https://form.typeform.com/to/zeW6gtop" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Take our 3 min quiz</a>
     </div>
   </div>
 </section>
@@ -854,63 +819,80 @@
   </div>
 </section>
 
-<!-- BLOCK 2: 3 UNKNOWNS -->
-<section id="unknowns">
+<!-- BLOCK 3: HOW WE WORK — Two-column layout with phases -->
+<section id="how-we-work">
   <div class="inner">
     <div class="section-head">
-      <span class="label">Your reality</span>
-      <h2 class="section-title">The 3 headaches of affiliate marketplaces.</h2>
+      <span class="label">How we work</span>
+      <h2 class="section-title">From insight to impact.</h2>
     </div>
-    <div class="unknowns-grid">
-      <div class="unknown-card">
-        <div class="unknown-title"><span class="num">01</span>Entrance is gated.</div>
-        <p class="unknown-body">Publishers have limited "shelf space" already filled with big brand names. Securing shelf space only works if you know what they're optimizing for.</p>
+    <div class="how-we-work-wrapper">
+      <div class="how-we-work-left">
+        <p class="how-we-work-intro">We guide you through discovery, strategy, execution, and optimization—removing friction and unlocking growth at every stage.</p>
+        <ul class="how-we-work-checks">
+          <li>Conversion rates improve in 90 days</li>
+          <li>Outsized volume increases in 120 days</li>
+        </ul>
       </div>
-      <div class="unknown-card">
-        <div class="unknown-title"><span class="num">02</span>Opaque feedback.</div>
-        <p class="unknown-body">You're in, but not getting enough customers and not getting useful information from the publisher. You sense something's wrong, but can't tell if it's your product, the funnel, the underwriting, or the relationship. You spend the next 6–12 months guessing what to change.</p>
+      <div class="phases-grid">
+        <div class="phase-card">
+          <div class="phase-num">01. Discovery & Audit</div>
+          <p class="phase-desc">Meet with marketing, product, partnerships, and credit teams to find funnel friction, underwriting gaps, and growth constraints.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">02. Strategy Design</div>
+          <p class="phase-desc">Deliver a 6+ month roadmap with priorities, volume upside, and CPA targets. Drive alignment with stakeholders, pressure-test the roadmap, and lock the execution plan.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">03. Execution Sprint</div>
+          <p class="phase-desc">Guide execution with weekly working sessions, fast feedback, and direct 24/7 support on key decisions. We stay close to partner, pricing, and channel moves as the plan goes live.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">04. Measure & Optimize</div>
+          <p class="phase-desc">Track what's working, adjust what isn't, and optimize for stronger performance over time. Keep the team focused on the highest-leverage opportunities.</p>
+        </div>
       </div>
-      <div class="unknown-card">
-        <div class="unknown-title"><span class="num">03</span>Silent delisting.</div>
-        <p class="unknown-body">Publishers are objective and data-driven in their decision making. When your ads don't perform, they may run your ads on low-quality inventory or, worse, completely remove you — often silently. If you burn a channel, you're iced for 2–3 years.</p>
-      </div>
-    </div>
-    <div class="unknowns-closer">
-      <p class="closer-label">The hardest part</p>
-      <p class="closer-statement">Most lenders don't know where to find a playbook to address these 3 challenges.</p>
     </div>
   </div>
 </section>
 
-<!-- BLOCK 3: DIY FAILS — hosts the rail-crossing teal block -->
-<section id="diy-fails">
+<!-- BLOCK 4: PROOF — blue rail inflection -->
+<section id="proof">
   <div class="inner">
     <div class="section-head">
-      <span class="label">Why DIY fails</span>
-      <h2 class="section-title">The answer won't come from inside your org.</h2>
+      <span class="label">Results</span>
+      <h2 class="section-title">Our work speaks for itself.</h2>
     </div>
-    <p class="diy-body">Affiliate marketplaces are fiercely competitive. They have strong POVs on product, application funnels, integrations, APIs, conversion rates. The list goes on.</p>
-    <p class="diy-pivot">To win, your <strong>entire organization</strong> needs to be aligned on what needs to be delivered, the reasons behind it, and the ROI on those investments.</p>
-    <p class="diy-options-intro">At this point you have two options:</p>
-    <div class="options-grid">
-      <div class="option-card option-1">
-        <h3 class="option-title">Debate internally for 12+ months.</h3>
-        <ul class="option-list">
-          <li>Credit, product, engineering, and marketing argue about what matters.</li>
-          <li>Nobody in the room has seen this before.</li>
-          <li>Even if you luck into alignment, you still have <strong>6–12 months</strong> of execution ahead.</li>
-          <li>Realistic timeline: <strong>two years</strong>.</li>
-          <li>Meanwhile you're <strong>burning budget</strong> and possibly burning the channel.</li>
-        </ul>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-num">40K+</div>
+        <div class="proof-title">Approvals/month within 12 months of engagement</div>
+        <div class="proof-bab">
+          <div class="proof-bab-label">Before</div>
+          <p class="proof-bab-text">Strong product. Couldn't get Credit Karma to see the business case.</p>
+          <div class="proof-bab-label is-action">What we did</div>
+          <p class="proof-bab-text is-action">Brought the right relationships and got the conversation to a senior-enough level to tell the full story.</p>
+        </div>
       </div>
-      <div class="option-card option-2">
-        <h3 class="option-title">Bring in operators who've seen this 50+ times.</h3>
-        <ul class="option-list">
-          <li>Cross-functional alignment in <strong>60 days</strong>.</li>
-          <li>Improvements to conversion rates in <strong>90</strong>.</li>
-          <li>Significant volume increases in <strong>120</strong>.</li>
-          <li>Execute your operating plan with <strong>conviction in the ROI</strong>.</li>
-        </ul>
+      <div class="proof-card">
+        <div class="proof-num">9K → 25K</div>
+        <div class="proof-title">Monthly new card accounts in 4 months</div>
+        <div class="proof-bab">
+          <div class="proof-bab-label">Before</div>
+          <p class="proof-bab-text">Program was running. Approvals were suppressed. The lender didn't know why.</p>
+          <div class="proof-bab-label is-action">What we did</div>
+          <p class="proof-bab-text is-action">Underwriting model analysis surfaced a data vendor feeding incorrect information — suppressing approvals the lender didn't know they were losing. Fixed in 4 months.</p>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-num">2x</div>
+        <div class="proof-title">Volume so fast they ran out of capital allocation</div>
+        <div class="proof-bab">
+          <div class="proof-bab-label">Before</div>
+          <p class="proof-bab-text">Personal loan program performing well below potential. APR positioning misaligned, application friction too high.</p>
+          <div class="proof-bab-label is-action">What we did</div>
+          <p class="proof-bab-text is-action">Fixed APR positioning and reduced application friction. Volume more than doubled — they exhausted their 2025 capital allocation ahead of schedule. Re-engaging in 2026.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -964,101 +946,9 @@
   </div>
 </section>
 
-<!-- BLOCK 5: PROOF — blue rail inflection -->
-<section id="proof">
+<!-- BLOCK 6: QUIZ CTA -->
+<section id="quiz-cta">
   <div class="inner">
-    <div class="section-head">
-      <span class="label">Results</span>
-      <h2 class="section-title">Proof is in the results.</h2>
-      <p class="section-desc">Metrics sourced directly from client reporting.</p>
-    </div>
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="proof-num">40K+</div>
-        <div class="proof-title">Approvals/month within 12 months of engagement</div>
-        <div class="proof-bab">
-          <div class="proof-bab-label">Before</div>
-          <p class="proof-bab-text">Strong product. Couldn't get Credit Karma to see the business case.</p>
-          <div class="proof-bab-label is-action">What we did</div>
-          <p class="proof-bab-text is-action">Brought the right relationships and got the conversation to a senior-enough level to tell the full story.</p>
-        </div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-num">9K → 25K</div>
-        <div class="proof-title">Monthly new card accounts in 4 months</div>
-        <div class="proof-bab">
-          <div class="proof-bab-label">Before</div>
-          <p class="proof-bab-text">Program was running. Approvals were suppressed. The lender didn't know why.</p>
-          <div class="proof-bab-label is-action">What we did</div>
-          <p class="proof-bab-text is-action">Underwriting model analysis surfaced a data vendor feeding incorrect information — suppressing approvals the lender didn't know they were losing. Fixed in 4 months.</p>
-        </div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-num">2x</div>
-        <div class="proof-title">Volume so fast they ran out of capital allocation</div>
-        <div class="proof-bab">
-          <div class="proof-bab-label">Before</div>
-          <p class="proof-bab-text">Personal loan program performing well below potential. APR positioning misaligned, application friction too high.</p>
-          <div class="proof-bab-label is-action">What we did</div>
-          <p class="proof-bab-text is-action">Fixed APR positioning and reduced application friction. Volume more than doubled — they exhausted their 2025 capital allocation ahead of schedule. Re-engaging in 2026.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOCK 7: WINNING — the larger feature box, teal-soft panel -->
-<section id="winning">
-  <div class="inner">
-    <div class="section-head">
-      <span class="label">The upside</span>
-      <h2 class="section-title">We know what winning looks like.</h2>
-      <p class="section-desc">A well-run affiliate program is the best-ROI channel most consumer lenders will ever run.</p>
-    </div>
-    <div class="tiers-grid">
-      <div class="tier-card tier-1">
-        <div class="tier-label">Tier 1 — Solid</div>
-        <div class="tier-num">5–10K</div>
-        <p class="tier-body">New customers/month at high ROI. Most lenders never get here.</p>
-      </div>
-      <div class="tier-card tier-2">
-        <div class="tier-label">Tier 2 — Strong</div>
-        <div class="tier-num">10–50K</div>
-        <p class="tier-body">New customers/month at high ROI. This is what "working" looks like.</p>
-      </div>
-      <div class="tier-card tier-3">
-        <div class="tier-label">Tier 3 — Home Run</div>
-        <div class="tier-num">50K+</div>
-        <p class="tier-body">New customers/month. Best ROI of any channel you run. Rare. Achievable.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOCK 6: HOW WE WORK -->
-<section id="how-we-work">
-  <div class="inner">
-    <div class="section-head">
-      <span class="label">How we work</span>
-      <h2 class="section-title">The problem is complicated. Diagnosing the solution is fast.</h2>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <div class="step-title">Diagnose.</div>
-        <p class="step-body">Take the 3-minute quiz to get a read on where your program stands — what's ready, what's not, and what each month of delay is costing you. If there's a fit, we'll talk through it on a 20-minute call.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <div class="step-title">Deploy quick wins.</div>
-        <p class="step-body">We don't run six-month discovery processes. We come in already knowing the channel. When something works, we know why — so you can double down. When something breaks, we know why — so you can fix it in weeks, not months.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <div class="step-title">Build for the long haul.</div>
-        <p class="step-body">We construct the right foundation across product, pricing, application flows, targeting models, and messaging. Your team builds internal capability that lasts beyond the engagement.</p>
-      </div>
-    </div>
     <div class="steps-cta">
       <p>There's only one way to get started, and it starts with the quiz.</p>
       <a href="https://form.typeform.com/to/zeW6gtop" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Take our 3 min quiz</a>
