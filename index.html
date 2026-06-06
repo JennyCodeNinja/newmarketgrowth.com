@@ -591,6 +591,156 @@
   /* When #final-cta has rail-inflect, the inflection's blue tick reads against navy — keep visible */
   #final-cta.rail-inflect::after { background: var(--teal); }
 
+  /* ─── CONTACT MODAL ─────────────────────────────────────────────────────── */
+
+  /* Overlay */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(10, 37, 64, 0.72);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.is-open { display: flex; }
+
+  /* Panel */
+  .modal-panel {
+    background: var(--bg);
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 48px;
+    position: relative;
+    box-shadow: 0 24px 64px rgba(10, 37, 64, 0.24);
+  }
+
+  /* Close button */
+  .modal-close {
+    position: absolute; top: 20px; right: 20px;
+    background: none; border: none; cursor: pointer;
+    color: var(--text-light); font-size: 22px; line-height: 1;
+    padding: 4px 8px;
+    transition: color 120ms ease-out;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-close:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  /* Modal header */
+  .modal-eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .modal-headline {
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 800; line-height: 1.2;
+    letter-spacing: -0.025em; color: var(--text);
+    margin-bottom: 8px;
+  }
+  .modal-sub {
+    font-size: 15px; color: var(--text-mid); line-height: 1.55;
+    margin-bottom: 32px;
+  }
+
+  /* Form fields */
+  .form-field { margin-bottom: 20px; }
+  .form-label {
+    display: block; font-size: 13px; font-weight: 700;
+    color: var(--text); margin-bottom: 6px; letter-spacing: 0.01em;
+  }
+  .form-label .req { color: var(--teal); margin-left: 2px; }
+  .form-input {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--border); background: var(--bg);
+    font-family: var(--sans); font-size: 15px; color: var(--text);
+    transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+    appearance: none; -webkit-appearance: none;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0, 146, 188, 0.14);
+  }
+  .form-input.is-error { border-color: #D94040; }
+  .form-error {
+    display: none; font-size: 12px; color: #D94040;
+    margin-top: 5px; font-weight: 500;
+  }
+  .form-error.is-visible { display: block; }
+  .form-hint {
+    font-size: 12px; color: var(--text-light);
+    margin-top: 5px; line-height: 1.4;
+  }
+
+  /* Section divider inside form */
+  .form-section-label {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-mid);
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  /* Radio group */
+  .radio-group { display: flex; flex-direction: column; gap: 10px; }
+  .radio-option {
+    display: flex; align-items: flex-start; gap: 10px;
+    cursor: pointer;
+  }
+  .radio-option input[type="radio"] {
+    flex-shrink: 0;
+    width: 18px; height: 18px; margin-top: 2px;
+    accent-color: var(--blue);
+    cursor: pointer;
+  }
+  .radio-option-label {
+    font-size: 15px; color: var(--text); line-height: 1.4;
+    cursor: pointer;
+  }
+
+  /* Submit */
+  .form-submit-row { margin-top: 32px; }
+  .form-submit-row .btn { width: 100%; }
+  .form-legal {
+    font-size: 11px; color: var(--text-light);
+    margin-top: 12px; line-height: 1.5; text-align: center;
+  }
+
+  /* Success state */
+  .modal-success {
+    display: none; text-align: center; padding: 24px 0;
+  }
+  .modal-success.is-visible { display: block; }
+  .modal-success-icon {
+    font-size: 40px; margin-bottom: 20px;
+    display: block;
+  }
+  .modal-success-title {
+    font-size: 24px; font-weight: 800; color: var(--text);
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .modal-success-body {
+    font-size: 15px; color: var(--text-mid); line-height: 1.65;
+    max-width: 420px; margin: 0 auto;
+  }
+
+  /* Fallback inline form (no-JS) — hidden by default, shown if #contact is the target */
+  .contact-fallback {
+    display: none;
+  }
+  .no-js .contact-fallback { display: block; }
+
+  @media (max-width: 600px) {
+    .modal-panel { padding: 32px 24px; }
+  }
+
+  /* ─── END CONTACT MODAL ──────────────────────────────────────────────────── */
+
   /* FOOTER */
   footer { background: var(--bg); padding: 32px 0; border-top: 1px solid var(--border); }
   .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -765,7 +915,7 @@
         <li><a href="#how-we-work">How We Work</a></li>
         <li><a href="#proof">Results</a></li>
         <li><a href="#toaster">The Free Toaster</a></li>
-        <li><a href="https://tally.so/r/A7jlkl" target="_blank" rel="noopener noreferrer" class="nav-cta">Contact Us</a></li>
+        <li><a href="#contact" class="nav-cta js-open-modal">Contact Us</a></li>
       </ul>
     </div>
   </nav>
@@ -795,7 +945,7 @@
     </div>
     <p class="hero-bridge">How do you stack up to the best players?</p>
     <div class="hero-actions">
-      <a href="https://tally.so/r/A7jlkl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Contact Us</a>
+      <a href="#contact" class="btn btn-primary js-open-modal">Contact Us</a>
     </div>
   </div>
 </section>
@@ -950,8 +1100,8 @@
 <section id="question-cta">
   <div class="inner">
     <div class="steps-cta">
-      <p>There's only one way to get started. Apply to work with us.</p>
-      <a href="https://tally.so/r/A7jlkl" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Contact Us</a>
+      <p>There's only one way to get started. Tell us a little about yourself.</p>
+      <a href="#contact" class="btn btn-outline js-open-modal">Contact Us</a>
     </div>
   </div>
 </section>
@@ -1029,12 +1179,162 @@
     <h2 class="section-title">Ready to find out where you stand?</h2>
     <p class="final-cta-body">Please take a moment to share some information on your program and let's figure out how we can help move the needle.</p>
     <div class="final-cta-actions">
-      <a href="https://tally.so/r/A7jlkl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Contact Us</a>
+      <a href="#contact" class="btn btn-primary js-open-modal">Contact Us</a>
     </div>
   </div>
 </section>
 
 </main>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+  <div class="modal-panel">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+
+    <!-- Form view -->
+    <div id="modal-form-view">
+      <h2 class="modal-headline" id="modal-headline">Let's work together.</h2>
+      <p class="modal-sub">We review every submission and reach out within one business day.</p>
+
+      <form
+        id="contact-form"
+        action="https://formsubmit.co/jen@arcamplify.com"
+        method="POST"
+        novalidate
+      >
+        <!-- Formsubmit config -->
+        <input type="hidden" name="_subject" value="New Contact Form Submission — NMG">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_autoresponse" value="Thanks for reaching out! Carlos and Robert will be in touch shortly. — Carlos &amp; Robert, co-founders New Market Growth">
+        <input type="hidden" name="_next" value=""><!-- handled by JS -->
+
+        <!-- Row 1: Name -->
+        <div class="form-field">
+          <label class="form-label" for="first-name">First name <span class="req">*</span></label>
+          <input
+            class="form-input"
+            type="text"
+            id="first-name"
+            name="First name"
+            autocomplete="given-name"
+            required
+          >
+          <span class="form-error" id="err-first-name">Please enter your first name.</span>
+        </div>
+
+        <!-- Row 2: Work email -->
+        <div class="form-field">
+          <label class="form-label" for="work-email">Work email <span class="req">*</span></label>
+          <input
+            class="form-input"
+            type="email"
+            id="work-email"
+            name="Work email"
+            autocomplete="work email"
+            required
+          >
+          <span class="form-error" id="err-work-email">Please use your work email — we don't accept personal addresses (Gmail, Hotmail, Yahoo, etc.).</span>
+        </div>
+
+        <!-- Row 3: LinkedIn -->
+        <div class="form-field">
+          <label class="form-label" for="linkedin-url">LinkedIn profile URL <span class="req">*</span></label>
+          <input
+            class="form-input"
+            type="url"
+            id="linkedin-url"
+            name="LinkedIn URL"
+            placeholder="https://www.linkedin.com/in/your-profile"
+            autocomplete="off"
+            required
+          >
+          <p class="form-hint">We review your profile before every call.</p>
+          <span class="form-error" id="err-linkedin-url">Please enter a valid LinkedIn profile URL (linkedin.com/in/...).</span>
+        </div>
+
+        <!-- Qualifying questions divider -->
+        <p class="form-section-label">Help us prep for your call</p>
+
+        <!-- Q1: Primary lending product -->
+        <div class="form-field">
+          <p class="form-label">What is your primary lending product? <span class="req">*</span></p>
+          <div class="radio-group" role="group" aria-labelledby="q1-label">
+            <label class="radio-option">
+              <input type="radio" name="Primary lending product" value="Personal loan — below 36% APR" required>
+              <span class="radio-option-label">Personal loan — below 36% APR</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Primary lending product" value="Personal loan — above 36% APR">
+              <span class="radio-option-label">Personal loan — above 36% APR</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Primary lending product" value="Credit card (rewards, cash back, secured, or unsecured)">
+              <span class="radio-option-label">Credit card (rewards, cash back, secured, or unsecured)</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Primary lending product" value="Other consumer credit products (auto, HELOC, mortgage, student, etc.)">
+              <span class="radio-option-label">Other consumer credit products (auto, HELOC, mortgage, student, etc.)</span>
+            </label>
+          </div>
+          <span class="form-error" id="err-q1">Please select your primary lending product.</span>
+        </div>
+
+        <!-- Q2: Monthly digital acquisition budget -->
+        <div class="form-field">
+          <p class="form-label">What's your current monthly digital acquisition budget? <span class="req">*</span></p>
+          <div class="radio-group" role="group">
+            <label class="radio-option">
+              <input type="radio" name="Monthly digital acquisition budget" value="$500K or more per month" required>
+              <span class="radio-option-label">$500K or more per month</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Monthly digital acquisition budget" value="$100K–$500K per month">
+              <span class="radio-option-label">$100K–$500K per month</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Monthly digital acquisition budget" value="Under $100K per month">
+              <span class="radio-option-label">Under $100K per month</span>
+            </label>
+          </div>
+          <span class="form-error" id="err-q2">Please select your monthly budget range.</span>
+        </div>
+
+        <!-- Q3: Prior affiliate/comparison marketing experience -->
+        <div class="form-field">
+          <p class="form-label">Have you previously run campaigns through affiliate or comparison marketing channels? <span class="req">*</span></p>
+          <div class="radio-group" role="group">
+            <label class="radio-option">
+              <input type="radio" name="Affiliate experience" value="Yes — we've run affiliate campaigns and have performance benchmarks" required>
+              <span class="radio-option-label">Yes — we've run affiliate campaigns and have performance benchmarks</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Affiliate experience" value="We've done performance marketing (SEM, paid social) but not affiliate specifically">
+              <span class="radio-option-label">We've done performance marketing (SEM, paid social) but not affiliate specifically</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="Affiliate experience" value="This would be our first foray into affiliate or comparison marketing">
+              <span class="radio-option-label">This would be our first foray into affiliate or comparison marketing</span>
+            </label>
+          </div>
+          <span class="form-error" id="err-q3">Please select your experience level.</span>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn btn-primary">Let's Talk</button>
+          <p class="form-legal">We don't share your information. Ever.</p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Success view (shown after submit) -->
+    <div class="modal-success" id="modal-success-view">
+      <span class="modal-success-icon" aria-hidden="true">&#10003;</span>
+      <h3 class="modal-success-title">We've got your information.</h3>
+      <p class="modal-success-body">Carlos or Robert will review it and be in touch shortly. Check your inbox for a confirmation.</p>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1055,6 +1355,7 @@
 </footer>
 
 <script>
+  // ─── TOASTER SHOW MORE ────────────────────────────────────────────────────
   (function () {
     var grid = document.getElementById('toaster-pieces-grid');
     var btn = document.querySelector('.toaster-show-more');
@@ -1064,6 +1365,218 @@
       btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       btn.firstChild.nodeValue = expanded ? 'Show fewer pieces' : 'Show more pieces';
     });
+  })();
+
+  // ─── CONTACT MODAL ────────────────────────────────────────────────────────
+  (function () {
+    var overlay   = document.getElementById('contact-modal');
+    var closeBtn  = document.getElementById('modal-close');
+    var formView  = document.getElementById('modal-form-view');
+    var successView = document.getElementById('modal-success-view');
+    var form      = document.getElementById('contact-form');
+    var triggers  = document.querySelectorAll('.js-open-modal');
+
+    // Personal email domains to block
+    var BLOCKED_DOMAINS = [
+      'gmail.com','hotmail.com','yahoo.com','outlook.com','aol.com',
+      'icloud.com','me.com','mac.com','live.com','msn.com',
+      'protonmail.com','proton.me','mail.com'
+    ];
+
+    function openModal() {
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      // Focus first input after paint
+      setTimeout(function () {
+        var first = form.querySelector('input:not([type=hidden])');
+        if (first) first.focus();
+      }, 60);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    // Open triggers
+    triggers.forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Close: button
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    // Close: click outside panel
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+
+    // Close: Escape key + focus trap
+    document.addEventListener('keydown', function (e) {
+      if (!overlay.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { closeModal(); return; }
+      // Focus trap
+      if (e.key === 'Tab') {
+        var focusable = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+    });
+
+    // ── Validation helpers ─────────────────────────────────────────────────
+
+    function showError(inputEl, errorId) {
+      inputEl.classList.add('is-error');
+      var err = document.getElementById(errorId);
+      if (err) err.classList.add('is-visible');
+    }
+
+    function clearError(inputEl, errorId) {
+      inputEl.classList.remove('is-error');
+      var err = document.getElementById(errorId);
+      if (err) err.classList.remove('is-visible');
+    }
+
+    function clearErrorById(errorId) {
+      var err = document.getElementById(errorId);
+      if (err) err.classList.remove('is-visible');
+    }
+
+    function isBlockedEmail(email) {
+      var parts = email.toLowerCase().split('@');
+      if (parts.length !== 2) return false;
+      return BLOCKED_DOMAINS.indexOf(parts[1]) !== -1;
+    }
+
+    function isValidLinkedIn(url) {
+      return /linkedin\.com\/in\//i.test(url);
+    }
+
+    function getCheckedRadio(name) {
+      var radios = form.querySelectorAll('input[name="' + name + '"]');
+      for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) return radios[i].value;
+      }
+      return null;
+    }
+
+    function validateForm() {
+      var valid = true;
+
+      // First name
+      var firstName = document.getElementById('first-name');
+      if (!firstName.value.trim()) {
+        showError(firstName, 'err-first-name'); valid = false;
+      } else {
+        clearError(firstName, 'err-first-name');
+      }
+
+      // Work email
+      var workEmail = document.getElementById('work-email');
+      var emailVal = workEmail.value.trim();
+      if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal) || isBlockedEmail(emailVal)) {
+        showError(workEmail, 'err-work-email'); valid = false;
+      } else {
+        clearError(workEmail, 'err-work-email');
+      }
+
+      // LinkedIn URL
+      var linkedIn = document.getElementById('linkedin-url');
+      if (!linkedIn.value.trim() || !isValidLinkedIn(linkedIn.value.trim())) {
+        showError(linkedIn, 'err-linkedin-url'); valid = false;
+      } else {
+        clearError(linkedIn, 'err-linkedin-url');
+      }
+
+      // Q1
+      if (!getCheckedRadio('Primary lending product')) {
+        clearErrorById('err-q1');
+        document.getElementById('err-q1').classList.add('is-visible'); valid = false;
+      } else {
+        clearErrorById('err-q1');
+      }
+
+      // Q2
+      if (!getCheckedRadio('Monthly digital acquisition budget')) {
+        document.getElementById('err-q2').classList.add('is-visible'); valid = false;
+      } else {
+        clearErrorById('err-q2');
+      }
+
+      // Q3
+      if (!getCheckedRadio('Affiliate experience')) {
+        document.getElementById('err-q3').classList.add('is-visible'); valid = false;
+      } else {
+        clearErrorById('err-q3');
+      }
+
+      return valid;
+    }
+
+    // ── Inline error clearing on change ───────────────────────────────────
+    document.getElementById('first-name').addEventListener('input', function () {
+      if (this.value.trim()) clearError(this, 'err-first-name');
+    });
+    document.getElementById('work-email').addEventListener('input', function () {
+      var v = this.value.trim();
+      if (v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && !isBlockedEmail(v)) clearError(this, 'err-work-email');
+    });
+    document.getElementById('linkedin-url').addEventListener('input', function () {
+      if (isValidLinkedIn(this.value.trim())) clearError(this, 'err-linkedin-url');
+    });
+    ['Primary lending product', 'Monthly digital acquisition budget', 'Affiliate experience'].forEach(function (name, i) {
+      var errId = ['err-q1','err-q2','err-q3'][i];
+      form.querySelectorAll('input[name="' + name + '"]').forEach(function (radio) {
+        radio.addEventListener('change', function () { clearErrorById(errId); });
+      });
+    });
+
+    // ── Form submit ────────────────────────────────────────────────────────
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateForm()) {
+        // Scroll to first error inside the panel
+        var firstErr = form.querySelector('.is-error');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      var submitBtn = form.querySelector('[type=submit]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      // Submit via fetch to Formsubmit (AJAX endpoint)
+      var data = new FormData(form);
+      // Use Formsubmit AJAX endpoint (same address, returns JSON)
+      fetch('https://formsubmit.co/ajax/jen@arcamplify.com', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json && json.success === 'true') {
+          formView.style.display = 'none';
+          successView.classList.add('is-visible');
+        } else {
+          throw new Error('Formsubmit returned non-success');
+        }
+      })
+      .catch(function () {
+        // Fallback: native POST (navigates away from page)
+        form.removeEventListener('submit', arguments.callee);
+        form.submit();
+      });
+    });
+
   })();
 </script>
 
