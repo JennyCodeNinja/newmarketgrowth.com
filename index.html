@@ -1121,8 +1121,8 @@
     <h2 class="section-title toaster-title">The affiliate POV consumer lenders can't afford to&nbsp;miss.</h2>
     <p class="toaster-desc">A newsletter and podcast on what's actually moving in consumer affiliate — practitioner POV, live data, takes you won't get from trade press — read by thousands of bank and fintech&nbsp;operators.</p>
     <div class="toaster-actions">
-      <a href="https://www.thefreetoaster.com/podcast?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=cta_listen" class="btn btn-outline" target="_blank" rel="noopener">Listen to the podcast</a>
-      <a href="https://www.thefreetoaster.com/?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=cta_subscribe" class="btn btn-toaster" target="_blank" rel="noopener">Subscribe for Free</a>
+      <a href="https://www.thefreetoaster.com/podcast?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=cta_listen" class="btn btn-outline" target="_blank" rel="noopener" data-toaster-cta="podcast">Listen to the podcast</a>
+      <a href="https://www.thefreetoaster.com/?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=cta_subscribe" class="btn btn-toaster" target="_blank" rel="noopener" data-toaster-cta="subscribe">Subscribe for Free</a>
     </div>
     <div class="toaster-pieces" id="toaster-pieces-grid">
       <a href="https://www.thefreetoaster.com/p/e045-rakesh-patel-evp-of-the-experian-753?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=tile_rakesh" class="piece-card is-podcast" target="_blank" rel="noopener">
@@ -1175,7 +1175,7 @@
       </a>
     </div>
     <div class="toaster-more">
-      <button type="button" class="toaster-show-more" aria-expanded="false" aria-controls="toaster-pieces-grid">Show more pieces<span class="arrow" aria-hidden="true">↓</span></button>
+      <button type="button" class="toaster-show-more" aria-expanded="false" aria-controls="toaster-pieces-grid" data-toaster-expand="true">Show more pieces<span class="arrow" aria-hidden="true">↓</span></button>
       <a href="https://www.thefreetoaster.com/archive?utm_source=newmarketgrowth.com&amp;utm_medium=referral&amp;utm_campaign=toaster_section&amp;utm_content=archive_link" class="toaster-archive-link" target="_blank" rel="noopener">View full archive on Free Toaster →</a>
     </div>
   </div>
@@ -1440,6 +1440,23 @@
         }
       }
     });
+
+    // Track Free Toaster CTA clicks
+    var toasterCtaLinks = document.querySelectorAll('[data-toaster-cta]');
+    toasterCtaLinks.forEach(function (el) {
+      el.addEventListener('click', function () {
+        var ctaType = el.getAttribute('data-toaster-cta');
+        gtag('event', 'free_toaster_' + ctaType + '_click', { event_category: 'content', event_label: 'Free Toaster' });
+      });
+    });
+
+    // Track Free Toaster expand
+    var expandBtn = document.querySelector('[data-toaster-expand]');
+    if (expandBtn) {
+      expandBtn.addEventListener('click', function () {
+        gtag('event', 'free_toaster_expand', { event_category: 'content', event_label: 'Free Toaster' });
+      });
+    }
 
     // ── Validation helpers ─────────────────────────────────────────────────
 
